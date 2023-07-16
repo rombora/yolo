@@ -5,6 +5,8 @@ services:
     image: alvinrombora/yolo-backend:v1.0.0
     ports:
       - 5000:5000
+    networks:
+      - yolo-network
 
   client:
     image: alvinrombora/yolo-client:v1.0.0
@@ -13,3 +15,9 @@ services:
     stdin_open: true
     depends_on:
       - backend
+    networks:
+      - yolo-network
+
+networks:
+  yolo-network:
+    driver: bridge
