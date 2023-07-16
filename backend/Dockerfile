@@ -1,5 +1,5 @@
-FROM node:16-alpine
-WORKDIR /yolo/backend
+FROM node:13.12.0-alpine
+WORKDIR /app/backend
 
 COPY package.json package.json
 RUN npm install
