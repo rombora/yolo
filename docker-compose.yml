@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - 27017:27017
+    volumes:
+      - mongo-volume:/data/db
     networks:
       - yolo-network
 
@@ -33,3 +35,7 @@ services:
 networks:
   yolo-network:
     driver: bridge
+
+volumes:
+  mongo-volume:
+    driver: local
