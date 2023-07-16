@@ -20,4 +20,11 @@ Make sure that you have the following installed:
 
  `npm start`
 
- ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+ # Running a containerized version of the application
+ From the root directory of the application, run
+ 
+ `sudo docker compose up`
+ 
+ This will pull the necessary images from dockerhub and run the application.
+ 
+### Go ahead a nd add a product (note that the price field only takes a numeric input)
