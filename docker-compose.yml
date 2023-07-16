@@ -1,10 +1,22 @@
 version: '3'
 
 services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - yolo-network
+
   backend:
     image: alvinrombora/yolo-backend:v1.0.0
     ports:
       - 5000:5000
+    depends_on:
+      - mongo
+    environment:
+      MONGODB_URI: mongodb://mongo/yolomy
     networks:
       - yolo-network
 
