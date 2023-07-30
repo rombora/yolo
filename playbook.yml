@@ -1,0 +1,27 @@
+---
+- name: Setup Yolo App
+  hosts: all
+  become: yes
+  vars_files:
+    - vars.yml
+  tasks:
+  - name: Setup dependencies
+    tags: setup-dependencies
+    block:
+    - name: Update apt cache
+      include_role:
+        name: update-cache
+
+    - name: Install dependencies
+      include_role:
+        name: install-dependencies
+
+  - name: Clone app repository
+    tags: clone-repository
+    include_role:
+      name: clone-repository
+
+  - name: Run app
+    tags: run-app
+    include_role:
+      name: run-app
