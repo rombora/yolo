@@ -26,5 +26,23 @@ Make sure that you have the following installed:
  `sudo docker compose up`
  
  This will pull the necessary images from dockerhub and run the application.
+
+
+ # Running the application with Ansible playbook in a Vagrant Virtual Machine
+ ## Prerequisites
+ - Vagrant
+ - VirtualBox
+
+ ## Start VM
+ Run the following command to get everything setup and started in the VM.
+ 
+ `vagrant up`
+
+ This will create a virtual machine, and get everything setup. When it's done, the application should now be up and accessed in the web browser:
+ 
+ **http://localhost:3000**
+ <br/>
+ 
+ 
  
 ### Go ahead a nd add a product (note that the price field only takes a numeric input)
