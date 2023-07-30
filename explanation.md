@@ -37,3 +37,40 @@
 # Naming Standards
   To ensure ease of identification of Docker images and containers, the semver versioning system is used for the image tags.
   Here, versioning starts from v1.0.0.
+<br/>
+<br/>
+<br/>
+
+# Configuration Management with Ansible and Vagrant
+Here, an ansible playbook is used to automate the setup and deployment process of the applciation on a vagrant Virtual Machine.
+
+## i. Vagrantfile
+The vagrant file specifies the base image, geerlingguy/ubuntu2004, used to create the VM. It sets up port forwarding for the client and backend services at port 3000 and 5000 respectively. This allows access to the application on the host machine.
+
+## ii. ansible.cfg
+This is the configuration file for ansible. It defines the inventory file, path to the private key file, the remote user and host key checking value.
+
+## iii. hosts
+It defines the inventory of hosts for ansible. It holds the IP address and port to access the vagrant VM.
+
+## iv. playbook.yml
+This is the main ansible playbook. It consists of tasks that should be carried out to get the application to run. It makes use of **roles** to complete these tasks. The tasks include:
+- Setup dependencies
+  - Update apt cache
+  - Install dependencies
+- Clone app repository
+- Run app
+
+## v. vars.yml
+It contains the variables used in the playbook and roles. The variables are:
+- **app_repo**: the URL to the github repository with the application to setup and run
+- **app_version**: the branch to be used from the application repository
+- **app_dir**: the directory where the application is to be clone and setup
+
+## vi. roles
+This is a directory containing the roles that are performed by tasks in the playbook. The roles are:
+
+- **update-cache**: Updates the system packages in the VM.
+- **install-dependencies**: Install the necessary packages required to setup and run the application in the VM. These dependencies are docker and docker-compose.
+- **clone-repository**: Clones the repository from github, into the VM using git.
+- **run-app**: Starts running the application after everything has been setup in the VM. It executes the command `docker-compose up -d`.
