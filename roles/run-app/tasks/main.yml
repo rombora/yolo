@@ -1,0 +1,5 @@
+---
+# tasks file for run-app
+- shell:
+    cmd: docker-compose up -d
+    chdir: "{{ app_dir }}"
