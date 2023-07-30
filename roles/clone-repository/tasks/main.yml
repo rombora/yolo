@@ -1,0 +1,6 @@
+---
+# tasks file for clone-repository
+- git:
+    repo: "{{ app_repo }}"
+    dest: "{{ app_dir }}"
+    version: "{{ app_version }}"
