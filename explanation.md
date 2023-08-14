@@ -74,3 +74,49 @@ This is a directory containing the roles that are performed by tasks in the play
 - **install-dependencies**: Install the necessary packages required to setup and run the application in the VM. These dependencies are docker and docker-compose.
 - **clone-repository**: Clones the repository from github, into the VM using git.
 - **run-app**: Starts running the application after everything has been setup in the VM. It executes the command `docker-compose up -d`.
+<br/>
+<br/>
+<br/>
+
+# Kubernetes Deployment and Orchestration
+## Kubernetes objects
+- **Deployment**: Used to manage deployment of both client and backend.
+- **StatefulSets**: Manage the MongoDB. They are good for managing stateful applications and persist data.
+
+## Backend Deployment and Service
+To identify and manage the backend pod, it is labelled backend
+
+The deployment uses a container that runs an image from dockerhub: **alvinrombora/yolo-backend:v1.0.1**
+
+The backend container inside the pod listens on port **5000** to handle incoming requests.
+
+For communication with the database, the environment variable **MONGODB_URI** is assigned the value **mongodb://mongo:27017/yolomy** to reference the mongo service
+
+The backend kubernetes service is used to enable external access.
+
+It exposes port **5000** for access by external clients.
+
+## Client Deployment and Service
+To identify the client pod, it is labelled client.
+
+The client deployment uses the container **alvinrombora/yolo-client:v1.0.1**
+
+The client is run on port **3000**.
+
+It exposes port **3000** for external users to access the application.
+
+## Mongo StatefulSet and Service
+The application's MongoDB database is managed using StatefulSet which helps in persisting the application's data.
+
+The StatefulSet is given a container **"mongo"** which uses the mongo docker image
+
+The mongo container listens on port **27017** for database connections
+
+Data is persisted on the volume mounted at **/data/db**
+
+Port **27017** is exposed to allow for database connections
+
+
+
+
+
