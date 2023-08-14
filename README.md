@@ -62,9 +62,9 @@ kubectl apply -f client_deployment.yml
 kubectl apply -f client_service.yml
 ```
 
-After that, we can how access the application from the provided url
-In our case, we can access it [here](http://41.212.75.76:3000)
+After that, we can now access the application from the provided url
 
- 
+In our case, we can access it [here](http://41.212.75.76:3000)
+<br/>
  
 ### Go ahead a nd add a product (note that the price field only takes a numeric input)
