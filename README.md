@@ -43,6 +43,28 @@ Make sure that you have the following installed:
  **http://localhost:3000**
  <br/>
  
+
+# Running the application in Kubernetes container
+The application is running on http://41.212.75.76:3000
+
+## Create a cluster
+`gcloud container cluster create-auto yolo-cluster --region us-central1`
+
+## Apply the configurations
+Navigate to `/manifests` dir
+``cd manifests```
+```
+kubectl apply -f mongo_statefulset.yml
+kubectl apply -f mongo_service.yml
+kubectl apply -f backend_deployment.yml
+kubectl apply -f backend_service.yml
+kubectl apply -f client_deployment.yml
+kubectl apply -f client_service.yml
+```
+
+After that, we can how access the application from the provided url
+In our case, we can access it [here](http://41.212.75.76:3000)
+
  
  
 ### Go ahead a nd add a product (note that the price field only takes a numeric input)
